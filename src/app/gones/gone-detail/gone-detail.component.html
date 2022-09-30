@@ -1,0 +1,12 @@
+<div *ngIf="gone">
+  <h2>{{gone.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{gone.id}}</div>
+  <div>
+    <label for="gone-name">Gone name: </label>
+    <input id="gone-name" [(ngModel)]="gone.name" placeholder="Gone name"/>
+  </div>
+  <button type="button" (click)="goBack()">go back</button>
+  <button type="button" (click)="save()">save</button>
+</div>
+
+

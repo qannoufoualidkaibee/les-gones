@@ -1,0 +1,11 @@
+<h2>Top Gones</h2>
+<div class="gones-menu">
+  <a *ngFor="let gone of gones"
+      routerLink="/detail/{{gone.id}}">
+      {{gone.name}}
+  </a>
+</div>
+
+<app-gone-search></app-gone-search>
+
+

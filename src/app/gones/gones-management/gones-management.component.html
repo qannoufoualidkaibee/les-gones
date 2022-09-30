@@ -1,0 +1,23 @@
+<h2>My Gones</h2>
+
+<div>
+  <label for="new-gone">Gone name: </label>
+  <input id="new-gone" #goneName />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(goneName.value); goneName.value=''">
+    Add gone
+  </button>
+</div>
+
+<ul class="gones">
+  <li *ngFor="let gone of gones">
+    <a routerLink="/detail/{{gone.id}}">
+      <span class="badge">{{gone.id}}</span> {{gone.name}}
+    </a>
+    <button type="button" class="delete" title="delete gone"
+      (click)="delete(gone)">x</button>
+  </li>
+</ul>
+
+
