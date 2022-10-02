@@ -7,11 +7,11 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Gone } from './gone';
 import { MessageService } from './message.service';
 
-
 @Injectable({ providedIn: 'root' })
 export class GoneService {
 
   private gonesUrl = 'api/gones';  // URL to web api
+  private topGonesUrl = 'api/topGones';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -28,6 +28,15 @@ export class GoneService {
         tap(_ => this.log('fetched gones')),
         catchError(this.handleError<Gone[]>('getGones', []))
       );
+  }
+
+  /** GET gones from the server */
+  getTopGones(): Observable<Gone[]> {
+    return this.http.get<Gone[]>(this.topGonesUrl)
+        .pipe(
+            tap(_ => this.log('fetched top gones')),
+            catchError(this.handleError<Gone[]>('getTopGones', []))
+        );
   }
 
   /** GET gone by id. Return `undefined` when id not found */

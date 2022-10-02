@@ -4,11 +4,12 @@
 
   <ul class="search-result">
     <li *ngFor="let gone of gones$ | async" >
-      <a routerLink="/detail/{{gone.id}}">
+      <a (click)="openGoneDetail(gone)">
         {{gone.name}}
       </a>
     </li>
   </ul>
 </div>
-
-
+<app-aside [isOpened]="isAsideOpened" (onClose)="closeAside()">
+  <app-gone-detail [gone]="selectedGone"></app-gone-detail>
+</app-aside>

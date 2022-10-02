@@ -1,0 +1,31 @@
+.myapp_aside {
+    width: 20%;
+    height: 100%;
+    background: #E5E5E5;
+    position: fixed;
+    top: 0;
+    right: 0;
+    border: 1px solid;
+    padding: 1.2rem;
+}
+
+
+.myapp_aside button.delete {
+    position: absolute;
+    left: 0;
+    top: 5;
+    background-color: white;
+    color:  #525252;
+    font-size: 1.1rem;
+    margin: 0;
+    padding: 1px 10px 3px 10px;
+}
+
+.myapp_aside button.delete:hover {
+    background-color: #525252;
+    color: white;
+}
+
+.myapp_aside .myapp__close-aside {
+    position: absolute;
+}

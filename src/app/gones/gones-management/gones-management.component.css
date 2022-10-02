@@ -1,4 +1,7 @@
-/* GonesManagementComponent's private CSS styles */
+.myapp__bordered {
+  border: 1px solid;
+}
+
 .gones {
   margin: 0 0 2em 0;
   list-style-type: none;

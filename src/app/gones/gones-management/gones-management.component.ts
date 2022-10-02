@@ -1,15 +1,18 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {Component, EventEmitter} from '@angular/core';
 
-import { Gone } from '../../gone';
-import { GoneService } from '../../gone.service';
+import {Gone} from '../../gone';
+import {GoneService} from "../../gone.service";
+import {tap} from "rxjs";
 
 @Component({
-  selector: 'app-gones',
+  selector: 'app-gones-management',
   templateUrl: './gones-management.component.html',
   styleUrls: ['./gones-management.component.css']
 })
-export class GonesManagementComponent implements OnInit {
+export class GonesManagementComponent{
   gones: Gone[] = [];
+  isAsideOpened: boolean;
+  selectedGone: Gone | undefined;
 
   constructor(private goneService: GoneService) { }
 
@@ -19,16 +22,7 @@ export class GonesManagementComponent implements OnInit {
 
   getGones(): void {
     this.goneService.getGones()
-    .subscribe(gones => this.gones = gones);
-  }
-
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.goneService.addGone({ name } as Gone)
-      .subscribe(gone => {
-        this.gones.push(gone);
-      });
+        .subscribe(gones => this.gones = gones);
   }
 
   delete(gone: Gone): void {
@@ -36,6 +30,16 @@ export class GonesManagementComponent implements OnInit {
     this.goneService.deleteGone(gone.id).subscribe();
   }
 
+  openGoneDetail(gone: Gone): void{
+    this.isAsideOpened = true;
+    this.selectedGone = {...gone};
+  }
+
+  closeAside(): void {
+    debugger
+    this.isAsideOpened = false;
+    this.selectedGone = undefined;
+  }
 }
 
 

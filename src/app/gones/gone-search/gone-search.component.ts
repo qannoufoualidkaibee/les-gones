@@ -1,13 +1,11 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { Observable, Subject } from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
-import {
-   debounceTime, distinctUntilChanged, switchMap
- } from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 
-import { Gone } from '../../gone';
-import { GoneService } from '../../gone.service';
+import {Gone} from '../../gone';
+import {GoneService} from '../../gone.service';
 
 @Component({
   selector: 'app-gone-search',
@@ -17,6 +15,8 @@ import { GoneService } from '../../gone.service';
 export class GoneSearchComponent implements OnInit {
   gones$!: Observable<Gone[]>;
   private searchTerms = new Subject<string>();
+  isAsideOpened: boolean;
+  selectedGone: Gone | undefined;
 
   constructor(private goneService: GoneService) {}
 
@@ -36,6 +36,17 @@ export class GoneSearchComponent implements OnInit {
       // switch to new search observable each time the term changes
       switchMap((term: string) => this.goneService.searchGones(term)),
     );
+  }
+
+  openGoneDetail(gone: Gone): void{
+    this.isAsideOpened = true;
+    this.selectedGone = {...gone};
+  }
+
+  closeAside(): void {
+    debugger
+    this.isAsideOpened = false;
+    this.selectedGone = undefined;
   }
 }
 

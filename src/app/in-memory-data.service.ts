@@ -19,7 +19,8 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 20, name: 'Aurélien', numberOfEatenPizzaSlices: 50 },
       { id: 20, name: 'Oualid', numberOfEatenPizzaSlices: 40 },
     ];
-    return {gones};
+    const topGones: Gone[] = [...gones].sort(() => 0.5 - Math.random()).slice(0, 4);
+    return {gones, topGones};
   }
 
   // Overrides the genId method to ensure that a gone always has an id.
