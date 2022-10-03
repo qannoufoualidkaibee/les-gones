@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
+import {filter, Observable, of} from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Gone } from './gone';
@@ -11,7 +11,6 @@ import { MessageService } from './message.service';
 export class GoneService {
 
   private gonesUrl = 'api/gones';  // URL to web api
-  private topGonesUrl = 'api/topGones';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -32,11 +31,8 @@ export class GoneService {
 
   /** GET gones from the server */
   getTopGones(): Observable<Gone[]> {
-    return this.http.get<Gone[]>(this.topGonesUrl)
-        .pipe(
-            tap(_ => this.log('fetched top gones')),
-            catchError(this.handleError<Gone[]>('getTopGones', []))
-        );
+    return this.getGones()
+        .pipe(map((gones) => gones.filter((gone) => gone.numberOfEatenPizzaSlices >= 50)));
   }
 
   /** GET gone by id. Return `undefined` when id not found */

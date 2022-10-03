@@ -11,9 +11,12 @@ import {NgModule} from "@angular/core";
 import {RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
 import {GonesComponent} from "./gones.component";
+import {NgxsModule} from "@ngxs/store";
+import {GonesState} from "./store/gones.state";
 
 @NgModule({
     imports: [
+        NgxsModule.forRoot([GonesState]),
         HttpClientInMemoryWebApiModule.forRoot(
             InMemoryDataService, { dataEncapsulation: false }
         ),

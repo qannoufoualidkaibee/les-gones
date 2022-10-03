@@ -6,10 +6,7 @@
         <span class="badge">{{gone.id}}</span> {{gone.name}}
       </a>
       <button type="button" class="delete" title="delete gone"
-              (click)="delete(gone)">x</button>
+              (click)="delete.emit(gone)">x</button>
     </li>
   </ul>
 </div>
-<app-aside [isOpened]="isAsideOpened" (onClose)="closeAside()">
-  <app-gone-detail [gone]="selectedGone"></app-gone-detail>
-</app-aside>
