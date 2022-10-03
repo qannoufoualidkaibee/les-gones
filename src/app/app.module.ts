@@ -4,7 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
-import {GonesModule} from "./gones/gones/gones.module";
+import {GonesModule} from "./gones/gones.module";
 
 @NgModule({
   imports: [
