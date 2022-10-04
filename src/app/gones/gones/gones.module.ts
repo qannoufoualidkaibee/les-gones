@@ -5,10 +5,8 @@ import {InMemoryDataService} from "../../in-memory-data.service";
 import {DashboardComponent} from "../dashboard/dashboard.component";
 import {GonesManagementComponent} from "../gones-management/gones-management.component";
 import {GoneDetailComponent} from "../gone-detail/gone-detail.component";
-import {MessagesComponent} from "../messages/messages.component";
 import {GoneSearchComponent} from "../gone-search/gone-search.component";
 import {AsideComponent} from "../aside/aside.component";
-import {GoneFormComponent} from "../gone-form/gone-form.component";
 import {NgModule} from "@angular/core";
 import {RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
@@ -29,10 +27,8 @@ import {GonesComponent} from "./gones.component";
         DashboardComponent,
         GonesManagementComponent,
         GoneDetailComponent,
-        MessagesComponent,
         GoneSearchComponent,
-        AsideComponent,
-        GoneFormComponent
+        AsideComponent
     ]
 })
 export class GonesModule { }
