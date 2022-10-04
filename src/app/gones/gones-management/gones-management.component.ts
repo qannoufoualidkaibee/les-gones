@@ -12,21 +12,10 @@ import {GoneService} from "../../gone.service";
 export class GonesManagementComponent {
   @Input()
   gones: Gone[] | null;
-  isAsideOpened: boolean;
-  selectedGone: Gone | undefined;
   @Output()
   delete = new EventEmitter<Gone>();
-
-  openGoneDetail(gone: Gone): void{
-    this.isAsideOpened = true;
-    this.selectedGone = {...gone};
-  }
-
-  closeAside(): void {
-    debugger
-    this.isAsideOpened = false;
-    this.selectedGone = undefined;
-  }
+  @Output()
+  selectGone = new EventEmitter<Gone>();
 }
 
 

@@ -24,8 +24,8 @@ export class GoneService {
   getGones(): Observable<Gone[]> {
     return this.http.get<Gone[]>(this.gonesUrl)
       .pipe(
-        tap(_ => this.log('fetched gones')),
-        catchError(this.handleError<Gone[]>('getGones', []))
+          map((gones) => gones.map((gone) => new Gone(gone))),
+          catchError(this.handleError<Gone[]>('getGones', []))
       );
   }
 

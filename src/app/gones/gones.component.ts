@@ -14,6 +14,8 @@ export class GonesComponent implements OnInit {
 
   @Select(GonesState.getTopGones) topGones$: Observable<Gone[]>;
   @Select(GonesState.getGones) gones$: Observable<Gone[]>;
+  isAsideOpened: boolean;
+  selectedGone: Gone | undefined;
 
   constructor(private store: Store) {
   }
@@ -32,4 +34,14 @@ export class GonesComponent implements OnInit {
     this.store.dispatch(new UpdateGone(gone));
   }
 
+  openGoneDetail(gone: Gone): void{
+    this.isAsideOpened = true;
+    this.selectedGone = {...gone};
+  }
+
+  closeAside(): void {
+    debugger
+    this.isAsideOpened = false;
+    this.selectedGone = undefined;
+  }
 }
