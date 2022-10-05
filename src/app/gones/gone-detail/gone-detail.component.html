@@ -5,7 +5,7 @@
     <label for="gone-name">Gone name: </label>
     <input id="gone-name" [(ngModel)]="gone.name" placeholder="Gone name"/>
   </div>
-  <button type="button" (click)="save()">save</button>
+  <button type="button" (click)="update.emit(gone)">save</button>
 </div>
 
 

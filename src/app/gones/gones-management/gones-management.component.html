@@ -2,14 +2,11 @@
   <h2>My Gones</h2>
   <ul class="gones">
     <li *ngFor="let gone of gones">
-      <a (click)="openGoneDetail(gone)">
+      <a (click)="selectGone.emit(gone)">
         <span class="badge">{{gone.id}}</span> {{gone.name}}
       </a>
       <button type="button" class="delete" title="delete gone"
-              (click)="delete(gone)">x</button>
+              (click)="delete.emit(gone)">x</button>
     </li>
   </ul>
 </div>
-<app-aside [isOpened]="isAsideOpened" (onClose)="closeAside()">
-  <app-gone-detail [gone]="selectedGone"></app-gone-detail>
-</app-aside>

@@ -1,7 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 import {Gone} from '../../gone';
-import {GoneService} from '../../gone.service';
 
 @Component({
   selector: 'app-gone-detail',
@@ -12,16 +11,8 @@ export class GoneDetailComponent {
   @Input()
   gone: Gone | undefined;
 
-  constructor(
-    private goneService: GoneService
-  ) {}
-
-  save(): void {
-    if (this.gone) {
-      this.goneService.updateGone(this.gone)
-        .subscribe();
-    }
-  }
+  @Output()
+  update = new EventEmitter<Gone>();
 }
 
 

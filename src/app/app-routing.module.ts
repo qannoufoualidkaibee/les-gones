@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {GonesComponent} from "./gones/gones/gones.component";
+import {GonesComponent} from "./gones/gones.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/gones', pathMatch: 'full' },

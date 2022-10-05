@@ -1,0 +1,10 @@
+<app-dashboard [topGones]="topGones$ | async"></app-dashboard>
+<app-gone-search></app-gone-search>
+<app-gones-management
+    [gones]="gones$ | async"
+    (selectGone)="openGoneDetail($event)"
+    (delete)="deleteGone($event)"
+></app-gones-management>
+<app-aside [isOpened]="isAsideOpened" (onClose)="closeAside()">
+  <app-gone-detail [gone]="selectedGone" (update)="updateGone($event)"></app-gone-detail>
+</app-aside>
