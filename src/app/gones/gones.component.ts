@@ -21,7 +21,6 @@ export class GonesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.topGones$.subscribe((res) => console.log(res));
     this.store.dispatch(new LoadGones());
     this.store.dispatch(new LoadTopGones());
   }

@@ -17,7 +17,7 @@ export interface GonesStateModel {
         topGones: []
     }
 })
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class GonesState {
     constructor(private gonesService: GoneService) {
     }
